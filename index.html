@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Ocean Science & Geoinformatics Portfolio</title>
+
+    <style>
+        :root {
+            --bg-dark: #001b33;
+            --bg-light: #e8f8ff;
+            --text-dark: #ffffff;
+            --text-light: #00334d;
+            --accent: #4fc3f7;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            transition: background 0.5s ease, color 0.5s ease;
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        body.light-mode {
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Floating wave backgrounds */
+        .wave {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background-repeat: repeat-x;
+            bottom: 0;
+            animation: waveAnimation 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        .wave.light {
+            opacity: 0.35;
+        }
+
+        @keyframes waveAnimation {
+            from { background-position-x: 0; }
+            to { background-position-x: 1000px; }
+        }
+
+        nav {
+            background: rgba(0, 0, 30, 0.6);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(4px);
+        }
+
+        body.light-mode nav {
+            background: rgba(200, 240, 255, 0.8);
+        }
+
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        body.light-mode nav a:hover {
+            color: #005577;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+            background: rgba(0, 0, 40, 0.4);
+            border-radius: 12px;
+            margin-top: 40px;
+            backdrop-filter: blur(3px);
+            transition: background 0.4s;
+        }
+
+        body.light-mode section {
+            background: rgba(200, 240, 255, 0.7);
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            display: block;
+            margin: 20px auto;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .semester {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 40, 80, 0.4);
+            border-radius: 10px;
+            transition: background 0.4s;
+        }
+
+        body.light-mode .semester {
+            background: rgba(170, 220, 255, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #bfe9ff;
+        }
+
+        body.light-mode footer {
+            color: #004466;
+        }
+
+        /* Toggle Button */
+        #modeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #002233;
+            transition: background 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="modeToggle">Light Mode</button>
+
+    <header>
+        <img src="your-profile-picture.jpg" alt="Profile Picture" class="profile-img" />
+        <h1>Hi, my name is Weronika. Welcome to my ePortfolio.</h1>
+        <p>Oceanography • Remote Sensing • Geoinformatics</p>
+
+        <!-- Waves -->
+        <div class="wave" style="background-image: url('https://i.imgur.com/8KJXj6r.png');"></div>
+        <div class="wave light" style="background-image: url('https://i.imgur.com/8KJXj6r.png'); animation-duration: 18s;"></div>
+    </header>
+
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#cv">CV</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>Little about Me</h2>
+        <p>
+            Last year I finished my bachelors degree in the feild of Oceanography back in Poland, where I'm originally from. 
+            Currently I'm a student at the Paris Lodron University of Salzburg, where I'm during my first year of the Erasmus Mundus Joint Master (EMJM) "Copernicus Master in Digital Earth" (CDE).
+            My main focuse now is gaining a lot of practical knowleage connected to remote sensing and big data as well as expanding my programming experties as I'm going to continue my CDE jurney at the GeoDataScience track at the University of Southern Brittany in Frnace next academic year. 
+            My interests are connected to enviromental issuses like climate change and pollution, especially plastic pollution of the marine enviroments, as well as disaster and costal management. 
+        </p>
+    </section>
+
+    <section id="cv">
+        <h2>Curriculum Vitae</h2>
+        <p>Summarize your professional experience, education, skills, and achievements here.</p>
+        <ul>
+            <li><strong>Education:</strong>M.Sc., Erasmus Mundus Joint Master (EMJM) "Copernicus Master in Digital Earth", Paris Lodron Unversity of Salzburg, Austria, 2025- ongoing.</li>
+            <li><strong>Skills:</strong> SNAP, Python, QGIS/ArcGIS.</li>
+            <li><strong>Education:</strong>B.Sc. Oceanography, Unversity of Gdansk, Poland, 10.2022-07.2025.</li>
+            <li><strong>Education:</strong>B.Sc. Marine Geo-Sciences (Erasmus semester), Unversity of Bremen, Germany, 03.2024-08.2024.</li>
+            <li><strong>Skills:</strong> SNAP, Python, QGIS/ArcGIS.</li>
+            <li><strong>Experience:</strong> Internships, research, fieldwork.</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="semester">
+            <h3>Semester 1</h3>
+            <p>Describe your semester 1 projects here.</p>
+        </div>
+
+        <div class="semester">
+            <h3>Semester 2</h3>
+            <p>Describe your semester 2 projects here.</p>
+        </div>
+
+        <div class="semester">
+            <h3>Semester 3</h3>
+            <p>Describe your semester 3 projects here.</p>
+        </div>
+
+        <div class="semester">
+            <h3>Semester 4</h3>
+            <p>Describe your semester 4 projects here.</p>
+        </div>
+
+        <div class="semester">
+            <h3>Other projects</h3>
+            <p>The </p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a class="email" href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <p>LinkedIn: your-link-here</p>
+        <p>GitHub: your-github-link</p>
+    </section>
+
+    <footer>
+        © 2025 Weronika Kowalska
+    </footer>
+
+    <script>
+        const toggle = document.getElementById("modeToggle");
+
+        toggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+            toggle.textContent = document.body.classList.contains("light-mode")
+                ? "Dark Mode"
+                : "Light Mode";
+        });
+    </script>
+
+</body>
+</html>

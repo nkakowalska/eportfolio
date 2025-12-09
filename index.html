@@ -1,647 +1,248 @@
-import React, { useState } from 'react';
-import { User, Briefcase, FolderOpen, Mail, Waves, ChevronDown, ArrowUp, X, ExternalLink, Github, Calendar, Users } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Ocean Science & Geoinformatics Portfolio</title>
 
-export default function EPortfolio() {
-  const [showScrollTop, setShowScrollTop] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+    <style>
+        :root {
+            --bg-dark: #001b33;
+            --bg-light: #e8f8ff;
+            --text-dark: #ffffff;
+            --text-light: #00334d;
+            --accent: #4fc3f7;
+        }
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            transition: background 0.5s ease, color 0.5s ease;
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+        body.light-mode {
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            position: relative;
+        }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-sky-50 to-slate-100 relative overflow-hidden">
-      {/* Subtle wave background */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <svg className="absolute bottom-0 w-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
-          <path fill="url(#wave-gradient)" fillOpacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            <animate attributeName="d" dur="15s" repeatCount="indefinite" values="
-              M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
-              M0,160L48,149.3C96,139,192,117,288,112C384,107,480,117,576,138.7C672,160,768,192,864,186.7C960,181,1056,139,1152,128C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z;
-              M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" />
-          </path>
-          <defs>
-            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0ea5e9" />
-              <stop offset="50%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#7dd3fc" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
 
-      {/* Fixed Quick Navigation */}
-      <nav className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block">
-        <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-xl border border-slate-200 p-2">
-          <div className="flex flex-col space-y-4 py-2">
-            {[
-              { id: 'about', icon: User, label: 'About' },
-              { id: 'cv', icon: Briefcase, label: 'Experience' },
-              { id: 'projects', icon: FolderOpen, label: 'Projects' },
-              { id: 'contact', icon: Mail, label: 'Contact' }
-            ].map(({ id, icon: Icon, label }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className="group relative p-3 rounded-full hover:bg-sky-50 transition-all duration-300"
-                title={label}
-              >
-                <Icon className="w-5 h-5 text-slate-600 group-hover:text-sky-600 transition-colors" />
-                <span className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  {label}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </nav>
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
 
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-4 bg-sky-500 text-white rounded-full shadow-xl hover:bg-sky-600 transition-all duration-300 hover:scale-110"
-        >
-          <ArrowUp className="w-5 h-5" />
-        </button>
-      )}
+       
+        nav {
+            background: rgba(0, 0, 30, 0.6);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(4px);
+        }
 
-      {/* Project Modal */}
-      {selectedProject && (
-        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
-      )}
+        body.light-mode nav {
+            background: rgba(200, 240, 255, 0.8);
+        }
 
-      {/* Hero Section */}
-      <header className="relative z-10 min-h-screen flex items-center justify-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8">
-            <div className="w-48 h-48 bg-gradient-to-br from-sky-100 to-cyan-100 rounded-full mx-auto flex items-center justify-center shadow-2xl mb-6">
-              <User className="w-24 h-24 text-sky-500" />
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-800 mb-4">
-              Your Name
-            </h1>
-            <p className="text-2xl md:text-3xl text-slate-600 mb-6">
-              [Your Professional Title]
-            </p>
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-8">
-              [Brief professional tagline or mission statement]
-            </p>
-            <div className="flex justify-center space-x-4">
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="px-8 py-3 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-all duration-300 shadow-lg hover:shadow-xl font-medium"
-              >
-                Get in Touch
-              </button>
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="px-8 py-3 bg-white text-sky-600 rounded-lg hover:bg-slate-50 transition-all duration-300 shadow-lg hover:shadow-xl font-medium border-2 border-sky-500"
-              >
-                View Work
-              </button>
-            </div>
-          </div>
-          <div className="animate-bounce mt-16">
-            <ChevronDown className="w-8 h-8 text-slate-400 mx-auto" />
-          </div>
-        </div>
-      </header>
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
 
-      {/* Main Content - All Sections */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 relative z-10 space-y-24">
-        <AboutSection />
-        <CVSection />
-        <ProjectsSection onProjectClick={setSelectedProject} />
-        <ContactSection />
-      </main>
+        nav a:hover {
+            color: #ffffff;
+        }
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-8 relative z-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <Waves className="w-5 h-5 text-sky-400" />
-              <p className="text-slate-300">&copy; 2025 Your Name. All rights reserved.</p>
-            </div>
-            <div className="flex space-x-6">
-              <a href="#about" className="text-slate-300 hover:text-white transition-colors">About</a>
-              <a href="#cv" className="text-slate-300 hover:text-white transition-colors">Experience</a>
-              <a href="#projects" className="text-slate-300 hover:text-white transition-colors">Projects</a>
-              <a href="#contact" className="text-slate-300 hover:text-white transition-colors">Contact</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
+        body.light-mode nav a:hover {
+            color: #005577;
+        }
 
-function ProjectModal({ project, onClose }) {
-  return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4" onClick={onClose}>
-      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
-        <div className="sticky top-0 bg-white border-b border-slate-200 p-6 flex justify-between items-start z-10">
-          <div>
-            <h2 className="text-3xl font-bold text-slate-800 mb-2">{project.title}</h2>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-sm font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <button onClick={onClose} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-            <X className="w-6 h-6 text-slate-600" />
-          </button>
-        </div>
-        
-        <div className="p-6 space-y-6">
-          {/* Project Image/Visualization */}
-          <div className="w-full h-64 bg-gradient-to-br from-sky-100 to-cyan-100 rounded-xl flex items-center justify-center shadow-lg">
-            <FolderOpen className="w-24 h-24 text-sky-300" />
-          </div>
-          
-          {/* Project Details */}
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="flex items-center space-x-3">
-              <Calendar className="w-5 h-5 text-sky-500" />
-              <div>
-                <p className="text-sm text-slate-500">Duration</p>
-                <p className="font-medium text-slate-800">{project.duration}</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Users className="w-5 h-5 text-sky-500" />
-              <div>
-                <p className="text-sm text-slate-500">Team Size</p>
-                <p className="font-medium text-slate-800">{project.team}</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Briefcase className="w-5 h-5 text-sky-500" />
-              <div>
-                <p className="text-sm text-slate-500">Role</p>
-                <p className="font-medium text-slate-800">{project.role}</p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Description */}
-          <div>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">Project Overview</h3>
-            <p className="text-slate-600 leading-relaxed">{project.fullDescription}</p>
-          </div>
-          
-          {/* Key Features */}
-          <div>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">Key Features</h3>
-            <ul className="space-y-2">
-              {project.features.map((feature, idx) => (
-                <li key={idx} className="flex items-start space-x-2 text-slate-600">
-                  <span className="text-sky-600 mt-1">•</span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* Technologies */}
-          <div>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">Technologies Used</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-sky-50 text-sky-700 rounded-full text-sm font-medium">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-          
-          {/* Outcomes */}
-          <div>
-            <h3 className="text-xl font-semibold text-slate-800 mb-3">Outcomes & Impact</h3>
-            <p className="text-slate-600 leading-relaxed">{project.outcome}</p>
-          </div>
-          
-          {/* Links */}
-          <div className="flex space-x-4 pt-4 border-t border-slate-200">
-            {project.liveLink && (
-              <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors shadow-md">
-                <ExternalLink className="w-4 h-4" />
-                <span>View Live</span>
-              </a>
-            )}
-            {project.githubLink && (
-              <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-colors shadow-md">
-                <Github className="w-4 h-4" />
-                <span>View Code</span>
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+            background: rgba(0, 0, 40, 0.4);
+            border-radius: 12px;
+            margin-top: 40px;
+            backdrop-filter: blur(3px);
+            transition: background 0.4s;
+        }
 
-function AboutSection() {
-  return (
-    <section id="about" className="scroll-mt-24">
-      <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 border border-slate-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-        <div className="flex items-center mb-8">
-          <div className="w-12 h-12 bg-sky-50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-sky-100 transition-colors">
-            <User className="w-6 h-6 text-sky-500" />
-          </div>
-          <h2 className="text-4xl font-bold text-slate-800">About Me</h2>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2 space-y-4">
-            <p className="text-lg text-slate-700 leading-relaxed">
-              Hello! I'm [Your Name], a [Your Title/Field] passionate about [Your Interests].
-            </p>
-            <p className="text-slate-600 leading-relaxed">
-              [Add your professional introduction here. Focus on your background, expertise, 
-              and what drives you in your field. Keep it concise and impactful.]
-            </p>
-            <p className="text-slate-600 leading-relaxed">
-              [Add a second paragraph highlighting your key achievements, approach to work, 
-              or professional philosophy.]
-            </p>
-          </div>
-          
-          <div>
-            <h3 className="text-xl font-semibold text-slate-800 mb-4">Core Skills</h3>
-            <div className="space-y-2">
-              {['JavaScript', 'React', 'Python', 'UI/UX Design', 'Project Management', 'Data Analysis'].map((skill) => (
-                <div key={skill} className="flex items-center space-x-2 hover:translate-x-2 transition-transform duration-200">
-                  <div className="w-2 h-2 bg-sky-500 rounded-full"></div>
-                  <span className="text-slate-700">{skill}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+        body.light-mode section {
+            background: rgba(200, 240, 255, 0.7);
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            display: block;
+            margin: 20px auto;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .semester {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 40, 80, 0.4);
+            border-radius: 10px;
+            transition: background 0.4s;
+        }
+
+        body.light-mode .semester {
+            background: rgba(170, 220, 255, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #bfe9ff;
+        }
+
+        body.light-mode footer {
+            color: #004466;
+        }
+
+        /* Toggle Button */
+        #modeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #002233;
+            transition: background 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="modeToggle">Light Mode</button>
+
+    <header>
+        <img src="your-profile-picture.jpg" alt="Profile Picture" class="profile-img" />
+        <h1>Hi, my name is Weronika. Welcome to my ePortfolio.</h1>
+        <p>Oceanography • Remote Sensing • Geoinformatics</p>
+
+        <!-- Waves -->
+        <div class="wave" style="background-image: url('https://i.imgur.com/8KJXj6r.png');"></div>
+        <div class="wave light" style="background-image: url('https://i.imgur.com/8KJXj6r.png'); animation-duration: 18s;"></div>
+    </header>
+
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#cv">CV</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>Little about Me</h2>
+        <p>
+            Last year I finished my bachelors degree in the feild of Oceanography back in Poland, where I'm originally from. 
+            Currently I'm a student at the Paris Lodron University of Salzburg, where I'm during my first year of the Erasmus Mundus Joint Master (EMJM) "Copernicus Master in Digital Earth" (CDE).
+            My main focuse now is gaining a lot of practical knowleage connected to remote sensing and big data as well as expanding my programming experties as I'm going to continue my CDE jurney at the GeoDataScience track at the University of Southern Brittany in Frnace next academic year. 
+            My interests are connected to enviromental issuses like climate change and pollution, especially plastic pollution of the marine enviroments, as well as disaster and costal management. 
+        </p>
     </section>
-  );
-}
 
-function CVSection() {
-  const experiences = [
-    {
-      title: 'Position Title',
-      company: 'Company Name',
-      period: 'Month Year - Present',
-      description: 'Description of your role and key achievements. Focus on measurable results and specific contributions.',
-      highlights: ['Key achievement or responsibility', 'Another notable accomplishment', 'Important project or initiative']
-    },
-    {
-      title: 'Previous Position',
-      company: 'Previous Company',
-      period: 'Month Year - Month Year',
-      description: 'Description of your role and key achievements. Focus on measurable results and specific contributions.',
-      highlights: ['Key achievement or responsibility', 'Another notable accomplishment']
-    }
-  ];
-
-  const education = [
-    {
-      degree: 'Your Degree',
-      institution: 'University Name',
-      period: 'Year - Year',
-      details: 'Relevant coursework, honors, or achievements. GPA if noteworthy.'
-    }
-  ];
-
-  return (
-    <section id="cv" className="scroll-mt-24 space-y-8">
-      <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 border border-slate-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-        <div className="flex items-center mb-8">
-          <div className="w-12 h-12 bg-sky-50 rounded-lg flex items-center justify-center mr-4">
-            <Briefcase className="w-6 h-6 text-sky-500" />
-          </div>
-          <h2 className="text-4xl font-bold text-slate-800">Professional Experience</h2>
-        </div>
-        
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <div key={index} className="relative pl-8 border-l-2 border-sky-200 hover:border-sky-400 transition-colors duration-300 group">
-              <div className="absolute left-[-9px] top-0 w-4 h-4 bg-sky-500 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-              <div>
-                <h3 className="text-2xl font-semibold text-slate-800">{exp.title}</h3>
-                <p className="text-sky-600 font-medium text-lg">{exp.company}</p>
-                <p className="text-sm text-slate-500 mb-3">{exp.period}</p>
-                <p className="text-slate-600 leading-relaxed mb-3">{exp.description}</p>
-                <ul className="space-y-2">
-                  {exp.highlights.map((highlight, idx) => (
-                    <li key={idx} className="flex items-start space-x-2 text-slate-600">
-                      <span className="text-sky-600 mt-1">•</span>
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 border border-slate-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-        <h2 className="text-3xl font-bold text-slate-800 mb-6">Education</h2>
-        
-        <div className="space-y-6">
-          {education.map((edu, index) => (
-            <div key={index} className="relative pl-8 border-l-2 border-slate-200 hover:border-sky-300 transition-colors duration-300 group">
-              <div className="absolute left-[-9px] top-0 w-4 h-4 bg-slate-400 rounded-full group-hover:bg-sky-500 group-hover:scale-150 transition-all duration-300"></div>
-              <h3 className="text-xl font-semibold text-slate-800">{edu.degree}</h3>
-              <p className="text-slate-600 font-medium">{edu.institution}</p>
-              <p className="text-sm text-slate-500 mb-2">{edu.period}</p>
-              <p className="text-slate-600 leading-relaxed">{edu.details}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+    <section id="cv">
+        <h2>Curriculum Vitae</h2>
+        <p>Summarize your professional experience, education, skills, and achievements here.</p>
+        <ul>
+            <li><strong>Education:</strong>M.Sc., Erasmus Mundus Joint Master (EMJM) "Copernicus Master in Digital Earth", Paris Lodron Unversity of Salzburg, Austria, 2025- ongoing.</li>
+            <li><strong>Skills:</strong> SNAP, Python, QGIS/ArcGIS.</li>
+            <li><strong>Education:</strong>B.Sc. Oceanography, Unversity of Gdansk, Poland, 10.2022-07.2025.</li>
+            <li><strong>Education:</strong>B.Sc. Marine Geo-Sciences (Erasmus semester), Unversity of Bremen, Germany, 03.2024-08.2024.</li>
+            <li><strong>Skills:</strong> SNAP, Python, QGIS/ArcGIS.</li>
+            <li><strong>Experience:</strong> Internships, research, fieldwork.</li>
+        </ul>
     </section>
-  );
-}
 
-function ProjectsSection({ onProjectClick }) {
-  const semesters = [
-    {
-      name: 'Semester 1',
-      projects: [
-        { 
-          title: 'Project 1', 
-          description: 'Brief description of the project and its impact', 
-          tags: ['HTML', 'CSS'],
-          duration: '3 months',
-          team: '1 person',
-          role: 'Full Stack Developer',
-          fullDescription: 'This project involved creating a responsive website from scratch. The goal was to demonstrate proficiency in HTML and CSS while creating a user-friendly interface that works across all devices.',
-          features: [
-            'Responsive design that adapts to all screen sizes',
-            'Modern CSS Grid and Flexbox layouts',
-            'Accessible navigation and semantic HTML',
-            'Optimized performance and fast load times'
-          ],
-          technologies: ['HTML5', 'CSS3', 'Responsive Design', 'Git'],
-          outcome: 'Successfully delivered a fully responsive website that received positive feedback for its clean design and accessibility features. The project helped establish a strong foundation in front-end development.',
-          liveLink: 'https://example.com',
-          githubLink: 'https://github.com/yourusername/project1'
-        },
-        { 
-          title: 'Project 2', 
-          description: 'Interactive web application with dynamic features', 
-          tags: ['JavaScript', 'DOM'],
-          duration: '2 months',
-          team: '2 people',
-          role: 'Frontend Developer',
-          fullDescription: 'An interactive web application that demonstrates advanced JavaScript concepts including DOM manipulation, event handling, and asynchronous programming.',
-          features: [
-            'Dynamic content updates without page reload',
-            'Interactive user interface elements',
-            'Form validation and error handling',
-            'Local storage for data persistence'
-          ],
-          technologies: ['JavaScript', 'HTML', 'CSS', 'Local Storage API'],
-          outcome: 'Created a fully functional web application with smooth user interactions. Gained deep understanding of JavaScript fundamentals and best practices.',
-          githubLink: 'https://github.com/yourusername/project2'
-        }
-      ]
-    },
-    {
-      name: 'Semester 2',
-      projects: [
-        { 
-          title: 'Project 3', 
-          description: 'Modern single-page application', 
-          tags: ['React', 'Hooks'],
-          duration: '4 months',
-          team: '3 people',
-          role: 'React Developer',
-          fullDescription: 'A sophisticated single-page application built with React, demonstrating component-based architecture and modern React patterns including Hooks and Context API.',
-          features: [
-            'Component-based architecture for reusability',
-            'State management with React Hooks',
-            'Routing for seamless navigation',
-            'API integration for dynamic data'
-          ],
-          technologies: ['React', 'React Router', 'Axios', 'CSS Modules'],
-          outcome: 'Delivered a scalable and maintainable application that showcases modern React development practices. The project significantly improved understanding of component lifecycle and state management.',
-          liveLink: 'https://example.com/project3'
-        }
-      ]
-    },
-    {
-      name: 'Semester 3',
-      projects: [
-        { 
-          title: 'Project 4', 
-          description: 'Data analysis and visualization project', 
-          tags: ['Python', 'Data Science'],
-          duration: '3 months',
-          team: '2 people',
-          role: 'Data Analyst',
-          fullDescription: 'A comprehensive data analysis project that involved collecting, cleaning, and visualizing large datasets to extract meaningful insights.',
-          features: [
-            'Automated data collection and cleaning',
-            'Statistical analysis and modeling',
-            'Interactive data visualizations',
-            'Comprehensive reporting dashboard'
-          ],
-          technologies: ['Python', 'Pandas', 'Matplotlib', 'NumPy', 'Jupyter'],
-          outcome: 'Successfully identified key trends and patterns in the data, leading to actionable insights. The project demonstrated strong analytical and problem-solving skills.',
-          githubLink: 'https://github.com/yourusername/project4'
-        }
-      ]
-    },
-    {
-      name: 'Semester 4',
-      projects: [
-        { 
-          title: 'Project 5', 
-          description: 'Full-stack web application with authentication', 
-          tags: ['Full Stack', 'Node.js', 'Database'],
-          duration: '5 months',
-          team: '4 people',
-          role: 'Full Stack Developer',
-          fullDescription: 'A complete full-stack application featuring user authentication, database integration, and RESTful API design. This capstone project brought together all skills learned throughout the program.',
-          features: [
-            'Secure user authentication and authorization',
-            'RESTful API with CRUD operations',
-            'Database design and optimization',
-            'Responsive frontend interface',
-            'Real-time updates and notifications'
-          ],
-          technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Socket.io'],
-          outcome: 'Delivered a production-ready application that handles real user traffic. The project showcased ability to work across the entire development stack and collaborate effectively in a team environment.',
-          liveLink: 'https://example.com/project5',
-          githubLink: 'https://github.com/yourusername/project5'
-        }
-      ]
-    },
-    {
-      name: 'Other Projects',
-      projects: [
-        { 
-          title: 'Personal Portfolio', 
-          description: 'Custom portfolio website showcasing work', 
-          tags: ['React', 'Design', 'Personal'],
-          duration: '1 month',
-          team: '1 person',
-          role: 'Designer & Developer',
-          fullDescription: 'A personal portfolio website designed and built from scratch to showcase projects and skills in a professional and visually appealing manner.',
-          features: [
-            'Custom design with modern aesthetics',
-            'Smooth animations and transitions',
-            'Project showcase with filtering',
-            'Contact form integration',
-            'SEO optimization'
-          ],
-          technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
-          outcome: 'Created a unique online presence that effectively communicates skills and experience. The portfolio has been well-received by potential employers and collaborators.',
-          liveLink: 'https://yourportfolio.com'
-        }
-      ]
-    }
-  ];
+    <section id="projects">
+        <h2>Projects</h2>
 
-  return (
-    <section id="projects" className="scroll-mt-24">
-      <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 border border-slate-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-        <div className="flex items-center mb-8">
-          <div className="w-12 h-12 bg-sky-50 rounded-lg flex items-center justify-center mr-4">
-            <FolderOpen className="w-6 h-6 text-sky-500" />
-          </div>
-          <h2 className="text-4xl font-bold text-slate-800">Projects</h2>
+        <div class="semester">
+            <h3>Semester 1</h3>
+            <p>Describe your semester 1 projects here.</p>
         </div>
-        
-        <div className="space-y-12">
-          {semesters.map((semester, semIndex) => (
-            <div key={semIndex}>
-              <h3 className="text-2xl font-semibold text-slate-700 mb-6 pb-3 border-b-2 border-slate-200">
-                {semester.name}
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {semester.projects.map((project, projIndex) => (
-                  <button
-                    key={projIndex}
-                    onClick={() => onProjectClick(project)}
-                    className="group text-left rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-sky-50/30 hover:-translate-y-3 hover:rotate-1 cursor-pointer transform"
-                  >
-                    {/* Project Thumbnail */}
-                    <div className="w-full h-40 bg-gradient-to-br from-sky-100 to-cyan-100 rounded-xl mb-4 flex items-center justify-center group-hover:from-sky-200 group-hover:to-cyan-200 transition-all duration-500 shadow-md overflow-hidden relative">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-                      <FolderOpen className="w-16 h-16 text-sky-400 group-hover:text-sky-500 group-hover:scale-110 transition-all duration-300 relative z-10" />
-                    </div>
-                    
-                    <h4 className="text-xl font-semibold text-slate-800 mb-3 group-hover:text-sky-600 transition-colors flex items-center justify-between">
-                      {project.title}
-                      <ExternalLink className="w-5 h-5 text-slate-400 group-hover:text-sky-600 transition-colors" />
-                    </h4>
-                    <p className="text-slate-600 mb-4 leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm font-medium group-hover:bg-sky-200 group-hover:scale-110 transition-all duration-300">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
+
+        <div class="semester">
+            <h3>Semester 2</h3>
+            <p>Describe your semester 2 projects here.</p>
         </div>
-      </div>
+
+        <div class="semester">
+            <h3>Semester 3</h3>
+            <p>Describe your semester 3 projects here.</p>
+        </div>
+
+        <div class="semester">
+            <h3>Semester 4</h3>
+            <p>Describe your semester 4 projects here.</p>
+        </div>
+
+        <div class="semester">
+            <h3>Other projects</h3>
+            <p>The </p>
+        </div>
     </section>
-  );
-}
 
-function ContactSection() {
-  return (
-    <section id="contact" className="scroll-mt-24">
-      <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 border border-slate-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-        <div className="flex items-center mb-8">
-          <div className="w-12 h-12 bg-sky-50 rounded-lg flex items-center justify-center mr-4">
-            <Mail className="w-6 h-6 text-sky-500" />
-          </div>
-          <h2 className="text-4xl font-bold text-slate-800">Get In Touch</h2>
-        </div>
-        
-        <div className="max-w-3xl">
-          <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            I'm always open to discussing new opportunities, collaborations, or simply connecting with fellow professionals. 
-            Feel free to reach out through any of the following channels:
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <a href="mailto:your.email@example.com" className="flex items-start p-5 rounded-xl bg-gradient-to-br from-white to-sky-50/30 shadow-md hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2 hover:scale-105">
-              <Mail className="w-6 h-6 text-slate-400 group-hover:text-sky-500 mr-4 mt-1 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
-              <div>
-                <h3 className="font-semibold text-slate-800 mb-1">Email</h3>
-                <p className="text-sky-600 hover:underline">your.email@example.com</p>
-              </div>
-            </a>
-            
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="flex items-start p-5 rounded-xl bg-gradient-to-br from-white to-sky-50/30 shadow-md hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2 hover:scale-105">
-              <svg className="w-6 h-6 text-slate-400 group-hover:text-sky-500 mr-4 mt-1 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-              <div>
-                <h3 className="font-semibold text-slate-800 mb-1">LinkedIn</h3>
-                <p className="text-sky-600 hover:underline">linkedin.com/in/yourprofile</p>
-              </div>
-            </a>
-            
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="flex items-start p-5 rounded-xl bg-gradient-to-br from-white to-sky-50/30 shadow-md hover:shadow-2xl transition-all duration-300 group hover:-translate-y-2 hover:scale-105">
-              <svg className="w-6 h-6 text-slate-400 group-hover:text-sky-500 mr-4 mt-1 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              <div>
-                <h3 className="font-semibold text-slate-800 mb-1">GitHub</h3>
-                <p className="text-sky-600 hover:underline">github.com/yourusername</p>
-              </div>
-            </a>
-
-            <div className="flex items-start p-5 rounded-xl bg-gradient-to-br from-white to-sky-50/30 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <svg className="w-6 h-6 text-slate-400 mr-4 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <div>
-                <h3 className="font-semibold text-slate-800 mb-1">Location</h3>
-                <p className="text-slate-600">Your City, Country</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="p-6 bg-gradient-to-br from-sky-50 to-cyan-50 rounded-xl shadow-md">
-            <h3 className="font-semibold text-slate-800 mb-2">Availability</h3>
-            <p className="text-slate-700">
-              Currently open to: <span className="font-medium text-sky-700">Collaborations, Internships, Freelance Work</span>
-            </p>
-          </div>
-        </div>
-      </div>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a class="email" href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <p>LinkedIn: your-link-here</p>
+        <p>GitHub: your-github-link</p>
     </section>
-  );
-}
+
+    <footer>
+        © 2025 Weronika Kowalska
+    </footer>
+
+    <script>
+        const toggle = document.getElementById("modeToggle");
+
+        toggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+            toggle.textContent = document.body.classList.contains("light-mode")
+                ? "Dark Mode"
+                : "Light Mode";
+        });
+    </script>
+
+</body>
+</html>

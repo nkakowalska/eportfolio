@@ -111,12 +111,12 @@
                             My academic interests center around environmental issues such as climate change, marine pollution (plastic pollution in particular) and disaster and coastal management.
                         </p>
                         <p class="text-slate-600 leading-relaxed">
-                            Whenever I have free time, I love spending it outdoors doing sports such as windsurfing, swimming, hiking, skiing or snowboarding.
+                            Whenever I have free time, I love spending it outdoors, going on long walks or doing sports like windsurfing, swimming, skiing or snowboarding.
                         </p>
                     </div>
                     
                     <div>
-                        <h3 class="text-xl font-semibold text-slate-800 mb-4">Core Skills</h3>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4">Core skills and technologies:</h3>
                         <div class="space-y-2">
                             <div class="flex items-center space-x-2 hover:translate-x-2 transition-transform duration-200">
                                 <div class="w-2 h-2 bg-sky-500 rounded-full"></div>
@@ -183,7 +183,7 @@
                             <h3 class="text-2xl font-semibold text-slate-800">B.Sc. Oceanography</h3>
                             <p class="text-sky-600 font-medium text-lg">University of Gdańsk</p>
                             <p class="text-sm text-slate-500 mb-3">10.2022 - 07.2025</p>
-                            <p class="text-slate-600 leading-relaxed mb-3">I have studied Oceanography in Gdańsk for 3 years, where I gained a lot of theoretical knowleage about the seas and oceans on our planet, about their ecosystems, physics, as well as their geochemistry. My final thesis: "Factors controling the variability of microplastic contamination in Euphausia superba", was my reasearch on microplastic contamination in one of the key species of the Southern Ocean- Antarctic krill. Some of my most important (to me, most interesting) subjects included: </p>
+                            <p class="text-slate-600 leading-relaxed mb-3">I have studied Oceanography in Gdańsk for 3 years, where I gained a lot of theoretical knowleage about the seas and oceans on our planet, about their ecosystems, physics, as well as their geochemistry. My final thesis: "Factors controling the variability of microplastic contamination in Euphausia superba", was about my reasearch on microplastic contamination in one of the keystone species of the Southern Ocean- Antarctic krill. Some of my most important (to me, most interesting) subjects included: </p>
                             <ul class="space-y-2">
                                 <li class="flex items-start space-x-2 text-slate-600">
                                     <span class="text-sky-600 mt-1">•</span>
@@ -284,11 +284,23 @@
                     </div>
                     <div onclick="openModal('project2')" class="group rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-sky-50/30 hover:-translate-y-3 hover:rotate-1 cursor-pointer">
                         <div class="w-full h-40 rounded-xl mb-4 overflow-hidden shadow-md relative group-hover:shadow-xl transition-all">
-                            <img src="coming_soon.jpg" alt="Project 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="Displacement_map.png" alt="SAR_project" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                         </div>
                         <h4 class="text-xl font-semibold text-slate-800 mb-3 group-hover:text-sky-600 transition-colors">Displacement Map using SAR</h4>
-                        <p class="text-slate-600 mb-4">Comming soon</p>
+                        <p class="text-slate-600 mb-4">Report about creating a displacement map of the city Jakarta in Indonesia.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">ESA SNAP</span>
+                            <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">SAR data</span>
+                        </div>
+                    </div>
+                    <div onclick="openModal('project3')" class="group rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-sky-50/30 hover:-translate-y-3 hover:rotate-1 cursor-pointer">
+                        <div class="w-full h-40 rounded-xl mb-4 overflow-hidden shadow-md relative group-hover:shadow-xl transition-all">
+                            <img src="coming_soon.jpg" alt="Comming soon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                        </div>
+                        <h4 class="text-xl font-semibold text-slate-800 mb-3 group-hover:text-sky-600 transition-colors">Shepherd dog simulation</h4>
+                        <p class="text-slate-600 mb-4">A model simulationg the hearding behaviour of sheep.</p>
                         <div class="flex gap-2">
                             <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">ESA SNAP</span>
                             <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">SAR data</span>
@@ -451,6 +463,34 @@
                 technologies: ['Google Earth Engine','JavaScript'],
                 liveLink: 'https://code.earthengine.google.com/d6ce942e82da459dc4821604780377ab',
             },
+            project2: {
+                title: 'Displacement map using SAR',
+                tags: ['SAR data'],
+                image: 'Displacement_map.png', 
+                team: '1 person',
+                description: "This project involved creating a displacement map of an area of interest based on two Sentinel 1 images in ESA SNAP. The goal of my analysis was checking if it's possible to measure the subsidence that occurs in Jakarta in Indonesia based on a single displacement map and not a time-series analysis. ",
+                features: [
+                    'A description of the region and event (including sources of information)',
+                    'A step-by-step discription of the creation of the displacement map ',
+                    'Disscution of results and comparing them with literature',
+                ],
+                technologies: ['ESA SNAP'],
+                liveLink: '../eportfolio/W_Kowalska_RADAR.pdf',
+            },
+            project: {
+                title: 'Displacement map using SAR',
+                tags: ['SAR data'],
+                image: 'Displacement_map.png', 
+                team: '1 person',
+                description: "This project involved creating a displacement map of an area of interest based on two Sentinel 1 images in ESA SNAP. The goal of my analysis was checking if it's possible to measure the subsidence that occurs in Jakarta in Indonesia based on a single displacement map and not a time-series analysis. ",
+                features: [
+                    'A description of the region and event (including sources of information)',
+                    'A step-by-step discription of the creation of the displacement map ',
+                    'Disscution of results and comparing them with literature',
+                ],
+                technologies: ['ESA SNAP'],
+                liveLink: '../eportfolio/W_Kowalska_RADAR.pdf',
+            },
             Bachelor_Thesis: {
                 title: 'Bachelor Thesis: "Factors controling the variability of microplastic contamination in Euphausia superba"',
                 tags: ['JavaScript', 'DOM'],
@@ -507,7 +547,7 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                     </svg>
-                    <span>View Live</span>
+                    <span>View work</span>
                 </a>`;
             }
             if (project.githubLink) {

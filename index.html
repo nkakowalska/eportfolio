@@ -167,69 +167,98 @@
                     </div>
                     <h2 class="text-4xl font-bold text-slate-800">Education</h2>
                 </div>
-                
+
                 <div class="space-y-8">
-                    <div class="relative pl-8 border-l-2 border-sky-200 hover:border-sky-400 transition-colors duration-300 group">
+                    <!-- Erasmus Salzburg -->
+                    <button onclick="toggleEducation(0)" class="w-full text-left relative pl-8 border-l-2 border-sky-200 hover:border-sky-400 transition-colors duration-300 group">
                         <div class="absolute left-[-9px] top-0 w-4 h-4 bg-sky-500 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                        <div>
-                            <h3 class="text-2xl font-semibold text-slate-800">Erasmus Mundus Joint Master (EMJM) Copernicus Master in Digital Earth (CDE)</h3>
-                            <p class="text-sky-600 font-medium text-lg">Paris Lodron University of Salzburg</p>
-                            <p class="text-sm text-slate-500 mb-3">10.2025 - Present</p>
-                            <p class="text-slate-600 leading-relaxed mb-3">In the first semseter of the masters we are focusing on developing a strong fundation in Geoinformatics and Earth Observation. My subjects include: Advanced Remote Sensing, Spatial Simulation, Systems Thinking, Sptial Databases and many more.  </p>
-                            <ul class="space-y-2"></ul>
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-semibold text-slate-800 group-hover:text-sky-600 transition-colors">Erasmus Mundus Joint Master (EMJM) Copernicus Master in Digital Earth (CDE)</h3>
+                                <p class="text-sky-600 font-medium text-lg">Paris Lodron University of Salzburg</p>
+                                <p class="text-sm text-slate-500 mb-3">10.2025 - Present</p>
+                            </div>
+                            <svg data-edu-chevron class="w-5 h-5 text-slate-400 group-hover:text-sky-500 transition-all duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
                         </div>
+                        <div data-edu-details class="hidden mt-3 pt-3 border-t border-slate-100">
+                            <p class="text-slate-600 leading-relaxed">In the first semester of the masters we are focusing on developing a strong foundation in Geoinformatics and Earth Observation. My subjects include: Advanced Remote Sensing, Spatial Simulation, Systems Thinking, Spatial Databases and many more.</p>
+                        </div>
+                    </button>
+
+                    <!-- Oceanography Gdansk -->
+                    <button onclick="toggleEducation(1)" class="w-full text-left relative pl-8 border-l-2 border-sky-200 hover:border-sky-400 transition-colors duration-300 group">
                         <div class="absolute left-[-9px] top-0 w-4 h-4 bg-sky-500 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                        <div>
-                            <h3 class="text-2xl font-semibold text-slate-800">B.Sc. Oceanography</h3>
-                            <p class="text-sky-600 font-medium text-lg">University of Gdańsk</p>
-                            <p class="text-sm text-slate-500 mb-3">10.2022 - 07.2025</p>
-                            <p class="text-slate-600 leading-relaxed mb-3">I have studied Oceanography in Gdańsk for 3 years, where I gained a lot of theoretical knowleage about the seas and oceans on our planet, about their ecosystems, physics, as well as their geochemistry. My final thesis: "Factors controling the variability of microplastic contamination in Euphausia superba", was about my reasearch on microplastic contamination in one of the keystone species of the Southern Ocean- Antarctic krill. Some of my most important (to me, most interesting) subjects included: </p>
-                            <ul class="space-y-2">
-                                <li class="flex items-start space-x-2 text-slate-600">
-                                    <span class="text-sky-600 mt-1">•</span>
-                                    <span>Introduction to Sea Dynamics</span>
-                                </li>
-                                <li class="flex items-start space-x-2 text-slate-600">
-                                    <span class="text-sky-600 mt-1">•</span>
-                                    <span>Introduction to Sea Optics</span>
-                                </li>
-                                <li class="flex items-start space-x-2 text-slate-600">
-                                    <span class="text-sky-600 mt-1">•</span>
-                                    <span>Introduction to Satellite teledetection</span>
-                                </li>
-                                <li class="flex items-start space-x-2 text-slate-600">
-                                    <span class="text-sky-600 mt-1">•</span>
-                                    <span>Programming (Python)</span>
-                                </li>
-                                <p class="text-slate-600 leading-relaxed mb-3">During this time, I was also a member of a number of student bodies in the University, such as: the Student Parlament, the University Senate and the Student Council of the Department of Oceangraphy and Geography.</p>
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-semibold text-slate-800 group-hover:text-sky-600 transition-colors">B.Sc. Oceanography</h3>
+                                <p class="text-sky-600 font-medium text-lg">University of Gdańsk</p>
+                                <p class="text-sm text-slate-500 mb-3">10.2022 - 07.2025</p>
+                            </div>
+                            <svg data-edu-chevron class="w-5 h-5 text-slate-400 group-hover:text-sky-500 transition-all duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                            <div data-edu-details class="hidden mt-3 pt-3 border-t border-slate-100">
+                                <p class="text-slate-600 leading-relaxed mb-3">I have studied Oceanography in Gdańsk for 3 years, where I gained a lot of theoretical knowledge about the seas and oceans on our planet, about their ecosystems, physics, as well as their geochemistry. My final thesis: "Factors controlling the variability of microplastic contamination in Euphausia superba", was about my research on microplastic contamination in one of the keystone species of the Southern Ocean - Antarctic krill. Some of my most important (to me, most interesting) subjects included:</p>
+                                <ul class="space-y-2 mb-3">
+                                    <li class="flex items-start space-x-2 text-slate-600">
+                                        <span class="text-sky-600 mt-1">•</span>
+                                        <span>Introduction to Sea Dynamics</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2 text-slate-600">
+                                        <span class="text-sky-600 mt-1">•</span>
+                                        <span>Introduction to Sea Optics</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2 text-slate-600">
+                                        <span class="text-sky-600 mt-1">•</span>
+                                        <span>Introduction to Satellite teledetection</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2 text-slate-600">
+                                        <span class="text-sky-600 mt-1">•</span>
+                                        <span>Programming (Python)</span>
+                                    </li>
+                                </ul>
+                                <p class="text-slate-600 leading-relaxed">During this time, I was also a member of a number of student bodies in the University, such as: the Student Parliament, the University Senate and the Student Council of the Department of Oceanography and Geography.</p>
+                            </div>
+                        </button>
+
+                        <!-- Erasmus Bremen -->
+                        <button onclick="toggleEducation(2)" class="w-full text-left relative pl-8 border-l-2 border-sky-200 hover:border-sky-400 transition-colors duration-300 group">
+                            <div class="absolute left-[-9px] top-0 w-4 h-4 bg-sky-500 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-semibold text-slate-800 group-hover:text-sky-600 transition-colors">B.Sc. Marine Geosciences</h3>
+                                    <p class="text-sky-600 font-medium text-lg">University of Bremen (Erasmus semester)</p>
+                                    <p class="text-sm text-slate-500 mb-3">03.2024 - 08.2024</p>
+                                </div>
+                                <svg data-edu-chevron class="w-5 h-5 text-slate-400 group-hover:text-sky-500 transition-all duration-300 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                            <div data-edu-details class="hidden mt-3 pt-3 border-t border-slate-100">
+                                <p class="text-slate-600 leading-relaxed mb-3">I took part in an Erasmus exchange program in 2024, during which I spent a semester in Bremen, Germany studying Marine Geosciences. Some of the subjects I attended were:</p>
                                 <ul class="space-y-2">
-                            </ul>
-                        </div>
-                        <div class="absolute left-[-9px] top-0 w-4 h-4 bg-sky-500 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                        <div>
-                            <h3 class="text-2xl font-semibold text-slate-800">B.Sc. Marine Geosciences</h3>
-                            <p class="text-sky-600 font-medium text-lg">University of Bremen (Erasmus semester)</p>
-                            <p class="text-sm text-slate-500 mb-3">03.2024 - 08.2024</p>
-                            <p class="text-slate-600 leading-relaxed mb-3">I took part in an Erasmus exchange program in 2024, during which I spent a semester in Bremen, Germany studying Marine Geosciences. Some of the subjects I attended were:</p>
-                            <ul class="space-y-2">
-                                <li class="flex items-start space-x-2 text-slate-600">
-                                    <span class="text-sky-600 mt-1">•</span>
-                                    <span>Multidyscyplinary Sediment Core project,</span>
-                                </li>
-                                <li class="flex items-start space-x-2 text-slate-600">
-                                    <span class="text-sky-600 mt-1">•</span>
-                                    <span>Marine Geophysics,</span>
-                                </li>
-                                <li class="flex items-start space-x-2 text-slate-600">
-                                    <span class="text-sky-600 mt-1">•</span>
-                                    <span>Research Data Management and Analysis.</span>
-                                </li>
-                            </ul>
-                        </div>
-                     </div>
+                                    <li class="flex items-start space-x-2 text-slate-600">
+                                        <span class="text-sky-600 mt-1">•</span>
+                                        <span>Multidisciplinary Sediment Core project,</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2 text-slate-600">
+                                        <span class="text-sky-600 mt-1">•</span>
+                                        <span>Marine Geophysics,</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2 text-slate-600">
+                                        <span class="text-sky-600 mt-1">•</span>
+                                        <span>Research Data Management and Analysis.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </button>
+                    </div>
                 </div>
-            </div>
-               
+            
+            <!-- experience section -->
             <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 border border-slate-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
                 <h2 class="text-3xl font-bold text-slate-800 mb-6">Profesional experience</h2>
                 
@@ -324,14 +353,14 @@
                     </div>
                     <div onclick="openModal('project4')" class="group rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-sky-50/30 hover:-translate-y-3 hover:rotate-1 cursor-pointer">
                         <div class="w-full h-40 rounded-xl mb-4 overflow-hidden shadow-md relative group-hover:shadow-xl transition-all">
-                            <img src="project4.jpg" alt="Project 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="project4.jpg" alt="Project 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                         </div>
                         <h4 class="text-xl font-semibold text-slate-800 mb-3 group-hover:text-sky-600 transition-colors">Project 2</h4>
-                        <p class="text-slate-600 mb-4">Interactive web application with JavaScript</p>
+                        <p class="text-slate-600 mb-4">Project 4</p>
                         <div class="flex gap-2">
-                            <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">JavaScript</span>
-                            <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">DOM</span>
+                            <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">Something</span>
+                            <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">Somethin</span>
                         </div>
                     </div>-->
                 </div>
@@ -507,6 +536,41 @@
                 outcome: 'Created a fully functional web application with smooth user interactions.',
             }
         };
+        
+        // expandable education tabs
+        let expandedEdu = null;
+
+        function toggleEducation(index) {
+            if (expandedEdu === index) {
+                expandedEdu = null;
+            } else {
+                expandedEdu = index;
+            }
+            updateEducationDisplay();
+        }
+
+        function updateEducationDisplay() {
+            // Update all education items
+            document.querySelectorAll('[data-edu-details]').forEach((el, idx) => {
+                if (expandedEdu === idx) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+        });
+    
+    // Update chevron icons
+    document.querySelectorAll('[data-edu-chevron]').forEach((el, idx) => {
+        if (expandedEdu === idx) {
+            el.classList.add('rotate-180');
+        } else {
+            el.classList.remove('rotate-180');
+        }
+    });
+}
+
+
+
 
         // Open modal with project data
         function openModal(projectId) {

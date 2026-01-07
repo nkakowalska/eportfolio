@@ -300,6 +300,7 @@
                 <div class="space-y-12"></div>
                 <h3 class="text-2xl font-semibold text-slate-700 mb-6">Semester 1</h3>
                 <div class="grid md:grid-cols-2 gap-6">
+                     <!-- Google Earth Engine - Big Earth Data Project-->
                     <div onclick="openModal('project1')" class="group rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-sky-50/30 hover:-translate-y-3 hover:rotate-1 cursor-pointer">
                         <div class="w-full h-40 rounded-xl mb-4 overflow-hidden shadow-md relative group-hover:shadow-xl transition-all">
                             <img src="GEE.jpg" alt="Temporal analysis in Google Earth Engine" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -311,6 +312,7 @@
                             <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">Google Earth Engine</span>
                         </div>
                     </div>
+                     <!-- Advanced Remote Sensing: SAR displacement map -->
                     <div onclick="openModal('project2')" class="group rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-sky-50/30 hover:-translate-y-3 hover:rotate-1 cursor-pointer">
                         <div class="w-full h-40 rounded-xl mb-4 overflow-hidden shadow-md relative group-hover:shadow-xl transition-all">
                             <img src="Displacement_map.png" alt="SAR_project" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -323,6 +325,7 @@
                             <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">SAR data</span>
                         </div>
                     </div>
+                     <!-- Spatial Simulation: Dogs and Sheep simulation -->
                     <div onclick="openModal('project3')" class="group rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-sky-50/30 hover:-translate-y-3 hover:rotate-1 cursor-pointer">
                         <div class="w-full h-40 rounded-xl mb-4 overflow-hidden shadow-md relative group-hover:shadow-xl transition-all">
                             <img src="coming_soon.jpg" alt="Comming soon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -333,6 +336,19 @@
                         <div class="flex gap-2">
                             <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">GAMA</span>
                             <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">GAML</span>
+                        </div>
+                    </div>
+                     <!-- Spatial Thinking: A bird watching database -->
+                    <div onclick="openModal('project4')" class="group rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-sky-50/30 hover:-translate-y-3 hover:rotate-1 cursor-pointer">
+                        <div class="w-full h-40 rounded-xl mb-4 overflow-hidden shadow-md relative group-hover:shadow-xl transition-all">
+                            <img src="coming_soon.jpg" alt="Comming soon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                        </div>
+                        <h4 class="text-xl font-semibold text-slate-800 mb-3 group-hover:text-sky-600 transition-colors">Spatial Databases- video</h4>
+                        <p class="text-slate-600 mb-4">A video introducing Spatial Databases and showcasing a case study on bird paths.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">QGIS</span>
+                            <span class="px-3 py-1 bg-sky-100/80 text-sky-700 rounded-full text-sm group-hover:bg-sky-200 group-hover:scale-110 transition-all">PostgreSQL</span>
                         </div>
                     </div>
                 </div>
@@ -483,6 +499,7 @@
                 tags: ['Google Earth Engine'],
                 image: 'GEE.jpg', 
                 team: '1 person',
+                subject: 'Digital Earth: Big Earth Data Concepts',
                 description: 'This project involved creating a widget in Google Earth Engine. The goal of my widget was demonstrating the changes that occured in the city of Nusantara in Indonesia due to rapid expansion and urban growth in the last couple of years.',
                 features: [
                     'A slider showing the before and after the start of construction work',
@@ -497,6 +514,7 @@
                 tags: ['SAR data'],
                 image: 'Displacement_map.png', 
                 team: '1 person',
+                subject: 'Advanced Remote Sensing',
                 description: "This project involved creating a displacement map of an area of interest based on two Sentinel 1 images in ESA SNAP. The goal of my analysis was checking if it's possible to measure the subsidence that occurs in Jakarta in Indonesia based on a single displacement map and not a time-series analysis. ",
                 features: [
                     'A description of the region and event (including sources of information)',
@@ -511,6 +529,22 @@
                 tags: ['SAR data'],
                 image: 'Displacement_map.png', 
                 team: '1 person',
+                subject: 'Advanced Remote Sensing',
+                description: "This project involved creating a displacement map of an area of interest based on two Sentinel 1 images in ESA SNAP. The goal of my analysis was checking if it's possible to measure the subsidence that occurs in Jakarta in Indonesia based on a single displacement map and not a time-series analysis. ",
+                features: [
+                    'A description of the region and event (including sources of information)',
+                    'A step-by-step discription of the creation of the displacement map ',
+                    'Disscution of results and comparing them with literature',
+                ],
+                technologies: ['ESA SNAP'],
+                liveLink: '../eportfolio/W_Kowalska_RADAR.pdf',
+            },
+            project: {
+                title: 'Spatial Thiniking Database',
+                tags: ['SAR data'],
+                image: 'Displacement_map.png', 
+                team: '1 person',
+                subject: 'Spatial Thinking and Modelling',
                 description: "This project involved creating a displacement map of an area of interest based on two Sentinel 1 images in ESA SNAP. The goal of my analysis was checking if it's possible to measure the subsidence that occurs in Jakarta in Indonesia based on a single displacement map and not a time-series analysis. ",
                 features: [
                     'A description of the region and event (including sources of information)',
